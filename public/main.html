@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FB</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+  </head>
+<body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">form</a>
+        <ul id="nav-mobile" class="right">
+          <li id = "loginli"><a class="modal-trigger" href="#modal2">Login</a></li>
+          <li id = "signupli"><a class="modal-trigger" href="#modal1">SignUp</a></li>
+          <li id = "logoutli"><a onclick="logOut()">LogOut</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Sign Up modal -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>SignUp</h4>
+        <form autocomplete="off" onsubmit="signUp(event)">
+          <input type="email" id="signupEmail" placeholder="email" />
+          <input type="password" id="signupPassword" placeholder="password" />
+          <button class="btn waves-effect" type="submit">submit</button>
+        </form>
+        <button class="btn waves-effect blue" onclick="loginwithGoogle()">Login With Google</button>
+      </div>
+    </div>
+
+    <!--Log In Modal-->
+    <div id="modal2" class="modal">
+    <div class="modal-content">
+        <h4>Log In</h4>
+        <form  autocomplete="off" onsubmit="logIn(event)">
+          <input type="email" id="loginEmail" placeholder="email" />
+          <input type="password" id="loginPassword" placeholder="password" />
+          <button class="btn waves-effect" type="submit">submit</button>
+        </form>
+        <button class="btn waves-effect blue" onclick="loginwithGoogle()">Login With Google</button>
+      </div>
+    </div>
+    <!-- Edit Profile -->
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+          <h4>Edit your Details</h4>
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <input type="file" accept="image/*" onchange = "uploadImage(event)">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+          <form id="editProfile" autocomplete="off" onsubmit="updateUserProfile(event)">
+            <input type="email" name="profileEmail" placeholder="profileEmail" />
+            <input type="text" name="name" placeholder="name" />
+            <input type="text" name="phoneno" placeholder="phoneno" />
+            <input type="text" name="speciality" placeholder="speciality" />
+            <input type="text" name="portfolioUrl" placeholder="portfolio url" />
+            <input type="text" name="experience" placeholder="experience" />
+            <button class="btn waves-effect" type="submit">submit</button>
+          </form>
+          <button class="btn waves-effect blue" onclick="loginwithGoogle()">Login With Google</button>
+        </div>
+      </div>
+  
+    <div class="center">
+      <h1>your account details</h1>
+      <img id="proimg" class="circle" src="./ID's//favicon.png.jpeg" alt="noimage" style="width:50%; height:auto; background-color: black;">
+      <div class="userDetails"></div>
+    </div>
+
+    <table id="table" style = "display: none;">
+      <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone no</th>
+            <th>Speciality</th>
+            <th>Experience</th>
+            <th>Portfolio</th>
+        </tr>
+      </thead>
+
+      <tbody id = "tbody">
+      </tbody>
+    </table>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".modal");
+        var instances = M.Modal.init(elems);
+    });
+    </script>
+ <!-- Add Firebase SDK script tag -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+ <!-- Add your Firebase configuration -->
+    <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCDSJIybGC-QmqGQ4VCv05s8Djl9XY-Otk",
+      authDomain: "fir-tut-form-1ae51.firebaseapp.com",
+      projectId: "fir-tut-form-1ae51",
+      storageBucket: "fir-tut-form-1ae51.appspot.com",
+      messagingSenderId: "861249349602",
+      appId: "1:861249349602:web:218a679cc48d2d0e55fbbb"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="./scripts/auth.js"></script>
+    <script src="./scripts/firestoredb.js"></script>
+  </body>
+</html>
